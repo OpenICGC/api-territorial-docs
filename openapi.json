@@ -1,0 +1,2449 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Territorial",
+    "description": "Donades unes coordenades (x, y), retorna informació de diferents serveis (capes) que es troben en aquest punt.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://tortuguin.icgc.local:3003"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Informació dels serveis"
+    }
+  ],
+  "paths": {
+    "/territori/info": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir informació del tots serveis",
+        "description": "Aquesta ruta proporciona metadades sobre els serveis disponibles.",
+        "responses": {
+          "200": {
+            "description": "Metadades dels serveis"
+          },
+          "404": {
+            "description": "No s'ha pogut trobar el fitxer de metadades."
+          }
+        }
+      }
+    },
+    "/territori/{servei}/metadata": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir metadades d'un servei",
+        "description": "Aquesta ruta proporciona les metadades d'un servei específic o grup de serveis.",
+        "parameters": [
+          {
+            "name": "servei",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/{servei}/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir dades geoespacials d'un servei en concret",
+        "description": "Obté dades geoespacials d'un servei en coordenades geogràfiques.",
+        "parameters": [
+          {
+            "name": "servei",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/{servei}/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir dades geoespacials en UTM",
+        "description": "Obté dades geoespacials d'un servei en coordenades UTM.",
+        "parameters": [
+          {
+            "name": "servei",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/all/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir dades geoespacials de tots els serveis",
+        "description": "Obté dades geoespacials de tots els serveis.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/all/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Informació dels serveis"
+        ],
+        "summary": "Obtenir dades geoespacials UTM",
+        "description": "Obté dades geoespacials de tots els serveis en UTM.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/agrupacionscensals/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Agrupacions censals"
+        ],
+        "summary": "Agrupacions censals",
+        "description": "Agrupacions censals de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/agrupacionscensals/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Agrupacions censals"
+        ],
+        "summary": "Agrupacions censals UTM",
+        "description": "Agrupacions censals de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/agrupacionscensals/metadata": {
+      "get": {
+        "tags": [
+          "Agrupacions censals"
+        ],
+        "summary": "Agrupacions censals Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Agrupacions Censals.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquespolicials/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques Policials"
+        ],
+        "summary": "Àrees Bàsiques Policials",
+        "description": "Àrees Bàsiques Policials de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquespolicials/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques Policials"
+        ],
+        "summary": "Àrees Bàsiques Policials UTM",
+        "description": "Àrees Bàsiques Policials de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquespolicials/metadata": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques Policials"
+        ],
+        "summary": "Àrees Bàsiques Policials Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Àrees Bàsiques Policials.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquesserveissocials/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques de Serveis Socials"
+        ],
+        "summary": "Àrees Bàsiques de Serveis Socials",
+        "description": "Àrees Bàsiques de Serveis Socials de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquesserveissocials/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques de Serveis Socials"
+        ],
+        "summary": "Àrees Bàsiques de Serveis Socials UTM",
+        "description": "Àrees Bàsiques de Serveis Socials de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/areesbasiquesserveissocials/metadata": {
+      "get": {
+        "tags": [
+          "Àrees Bàsiques de Serveis Socials"
+        ],
+        "summary": "Àrees Bàsiques de Serveis Socials Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Àrees Bàsiques de Serveis Socials.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/aquifers/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Aqüífers"
+        ],
+        "summary": "Àqüífers",
+        "description": "Àqüífers de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/aquifers/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Aqüífers"
+        ],
+        "summary": "Àqüífers UTM",
+        "description": "Àqüífers de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/aquifers/metadata": {
+      "get": {
+        "tags": [
+          "Aqüífers"
+        ],
+        "summary": "Aqüífers Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Aqüífers.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cadastre/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Cadastre"
+        ],
+        "summary": "Cadastre",
+        "description": "Cadastre de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cadastre/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Cadastre"
+        ],
+        "summary": "Cadastre UTM",
+        "description": "Cadastre de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cadastre/metadata": {
+      "get": {
+        "tags": [
+          "Cadastre"
+        ],
+        "summary": "Cadastre Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Cadastre.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cobertessol/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Cobertes del sòl"
+        ],
+        "summary": "Cobertes del sòl",
+        "description": "Cobertes del sòl de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cobertessol/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Cobertes del sòl"
+        ],
+        "summary": "Cobertes del sòl UTM",
+        "description": "Cobertes del sòl de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/cobertessol/metadata": {
+      "get": {
+        "tags": [
+          "Cobertes del sòl"
+        ],
+        "summary": "Cobertes del sòl Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Cobertes del sòl.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/comarques/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Comarques"
+        ],
+        "summary": "Comarques",
+        "description": "Comarques de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/comarques/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Comarques"
+        ],
+        "summary": "Comarques UTM",
+        "description": "Comarques de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/comarques/metadata": {
+      "get": {
+        "tags": [
+          "Comarques"
+        ],
+        "summary": "Comarques Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Comarques.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/conques/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Conques Hidrològiques"
+        ],
+        "summary": "Conques Hidrològiques",
+        "description": "Conques hidrològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/conques/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Conques Hidrològiques"
+        ],
+        "summary": "Conques Hidrològiques UTM",
+        "description": "Conques hidrològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/conques/metadata": {
+      "get": {
+        "tags": [
+          "Conques Hidrològiques"
+        ],
+        "summary": "Conques Hidrològiques Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Conques Hidrològiques.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/geocoder/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Geocodificador invers"
+        ],
+        "summary": "Geocodificador invers",
+        "description": "Cadastre de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/geocoder/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Geocodificador invers"
+        ],
+        "summary": "Geocodificador invers UTM",
+        "description": "Cadastre de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/geocoder/metadata": {
+      "get": {
+        "tags": [
+          "Geocodificador invers"
+        ],
+        "summary": "Geocodificador invers Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Geocodificació inversa.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/h3/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "H3 Grid System"
+        ],
+        "summary": "H3 Grid System",
+        "description": "Catalunya's H3 Grid System.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/h3/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "H3 Grid System"
+        ],
+        "summary": "H3 Grid System UTM",
+        "description": "Catalunya's H3 Grid System.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/h3/metadata": {
+      "get": {
+        "tags": [
+          "H3 Grid System"
+        ],
+        "summary": "H3 Grid System Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei H3 Grid System.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/incendis/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Incendis forestals"
+        ],
+        "summary": "Incendis forestals",
+        "description": "Incendis forestals de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/incendis/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Incendis forestals"
+        ],
+        "summary": "Incendis forestals UTM",
+        "description": "Incendis forestals de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/incendis/metadata": {
+      "get": {
+        "tags": [
+          "Incendis forestals"
+        ],
+        "summary": "Incendis forestals Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Incendis Forestals.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/mucqualificacions/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Mapa Urbà de Qualificacions"
+        ],
+        "summary": "Mapa Urbà de Qualificacions",
+        "description": "MUC Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/mucqualificacions/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Mapa Urbà de Qualificacions"
+        ],
+        "summary": "Mapa Urbà de Qualificacions UTM",
+        "description": "MUC Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/mucqualificacions/metadata": {
+      "get": {
+        "tags": [
+          "Mapa Urbà de Qualificacions"
+        ],
+        "summary": "Mapa Urbà de Qualificacions Metadata",
+        "description": "Aquesta ruta proporciona les metadades del Mapa Urbà de Qualificacions.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/municipis/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Municipis"
+        ],
+        "summary": "Municipis",
+        "description": "Municipis de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/municipis/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Municipis"
+        ],
+        "summary": "Municipis UTM",
+        "description": "Municipis de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/municipis/metadata": {
+      "get": {
+        "tags": [
+          "Municipis"
+        ],
+        "summary": "Municipis Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Municipis.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/provincies/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Províncies"
+        ],
+        "summary": "Províncies",
+        "description": "Províncies de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/provincies/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Províncies"
+        ],
+        "summary": "Províncies UTM",
+        "description": "Províncies de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/provincies/metadata": {
+      "get": {
+        "tags": [
+          "Províncies"
+        ],
+        "summary": "Províncies Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Provincies.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/recintessigpac/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Recintes SIGPAC"
+        ],
+        "summary": "Recintes SIGPAC",
+        "description": "Recintes SIGPAC de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/recintessigpac/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Recintes SIGPAC"
+        ],
+        "summary": "Recintes SIGPAC UTM",
+        "description": "Recintes SIGPAC de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/recintessigpac/metadata": {
+      "get": {
+        "tags": [
+          "Recintes SIGPAC"
+        ],
+        "summary": "Recintes SIGPAC Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Recintes SIGPAC.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/regionssanitaries/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Regions Sanitàries"
+        ],
+        "summary": "Regions Sanitàries",
+        "description": "Regions sanitàries de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/regionssanitaries/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Regions Sanitàries"
+        ],
+        "summary": "Regions Sanitàries UTM",
+        "description": "Regions sanitàries de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/regionssanitaries/metadata": {
+      "get": {
+        "tags": [
+          "Regions Sanitàries"
+        ],
+        "summary": "Regions Sanitàries Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Regions Sanitàries.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/seccionscensals/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Seccions Censals"
+        ],
+        "summary": "Seccions Censals",
+        "description": "Seccions censals de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/seccionscensals/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Seccions Censals"
+        ],
+        "summary": "Seccions Censals UTM",
+        "description": "Seccions censals de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/seccionscensals/metadata": {
+      "get": {
+        "tags": [
+          "Seccions Censals"
+        ],
+        "summary": "Seccions Censals Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Seccions Censals.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/sistemaorientaciocartografica/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Sistema d'Orientació Cartogràfica"
+        ],
+        "summary": "Sistema d'Orientació Cartogràfica",
+        "description": "SOC de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/sistemaorientaciocartografica/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Sistema d'Orientació Cartogràfica"
+        ],
+        "summary": "Sistema d'Orientació Cartogràfica UTM",
+        "description": "SOC de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/sistemaorientaciocartografica/metadata": {
+      "get": {
+        "tags": [
+          "Sistema d'Orientació Cartogràfica"
+        ],
+        "summary": "Sistema d'Orientació Cartogràfica Metadata",
+        "description": "Aquesta ruta proporciona les metadades del Sistema d'Orientació Cartogràfica.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/subconqueshidrologiques/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Subconques Hidrològiques"
+        ],
+        "summary": "Subconques Hidrològiques",
+        "description": "Subconques hidrològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/subconqueshidrologiques/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Subconques Hidrològiques"
+        ],
+        "summary": "Subconques Hidrològiques UTM",
+        "description": "Subconques hidrològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/subconqueshidrologiques/metadata": {
+      "get": {
+        "tags": [
+          "Subconques Hidrològiques"
+        ],
+        "summary": "Subconques Hidrològiques Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Subconques Hidrològiques.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/tall5me/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Tall 5m E"
+        ],
+        "summary": "Tall 5m E",
+        "description": "Tall 5m E de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/tall5me/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Tall 5m E"
+        ],
+        "summary": "Tall 5m E UTM",
+        "description": "Tall 5m E de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/tall5me/metadata": {
+      "get": {
+        "tags": [
+          "Tall 5m E"
+        ],
+        "summary": "Tall 5m E Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Talls 5m E.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/unitatsgeologiques/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Unitats Geològiques"
+        ],
+        "summary": "Unitats Geològiques",
+        "description": "Unitats geològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/unitatsgeologiques/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Unitats Geològiques"
+        ],
+        "summary": "Unitats Geològiques UTM",
+        "description": "Unitats geològiques de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/unitatsgeologiques/metadata": {
+      "get": {
+        "tags": [
+          "Unitats Geològiques"
+        ],
+        "summary": "Unitats Geològiques Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei d'Unitats Geològiques.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegetacio/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Vegetació"
+        ],
+        "summary": "Vegetació",
+        "description": "Vegetació de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegetacio/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Vegetació"
+        ],
+        "summary": "Vegetació UTM",
+        "description": "Vegetació de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegetacio/metadata": {
+      "get": {
+        "tags": [
+          "Vegetació"
+        ],
+        "summary": "Vegetació Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei de Vegetació",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegueries/geo/{lon}/{lat}": {
+      "get": {
+        "tags": [
+          "Vegueries"
+        ],
+        "summary": "Vegueries",
+        "description": "Vegueries de Catalunya.",
+        "parameters": [
+          {
+            "name": "lon",
+            "in": "path",
+            "example": 2.01,
+            "description": "Longitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "lat",
+            "in": "path",
+            "example": 41.5,
+            "description": "Latitud",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegueries/utm/{x}/{y}": {
+      "get": {
+        "tags": [
+          "Vegueries"
+        ],
+        "summary": "Vegueries UTM",
+        "description": "Vegueries de Catalunya.",
+        "parameters": [
+          {
+            "name": "x",
+            "in": "path",
+            "example": 429686,
+            "description": "X UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "example": 4582259,
+            "description": "Y UTM",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dades geoespacials"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/territori/vegueries/metadata": {
+      "get": {
+        "tags": [
+          "Vegueries"
+        ],
+        "summary": "Vegueries Metadata",
+        "description": "Aquesta ruta proporciona les metadades del servei Vegueries.",
+        "responses": {
+          "200": {
+            "description": "Metadades del servei"
+          },
+          "404": {
+            "description": "Servei no trobat"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Pàgina d'inici"
+        ],
+        "summary": "Pàgina d'inici",
+        "description": "Pàgina d'inici de la KEIAKI API 2.",
+        "responses": {
+          "200": {
+            "description": "Benvinguda a la KEIAKI API 2."
+          }
+        }
+      }
+    },
+    "/visor": {
+      "get": {
+        "tags": [
+          "Visor API"
+        ],
+        "summary": "Visor API",
+        "description": "Serveix la pàgina del visor API.",
+        "responses": {
+          "200": {
+            "description": "Pàgina del visor API servida amb èxit."
+          }
+        }
+      }
+    }
+  }
+}
