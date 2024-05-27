@@ -1,5 +1,5 @@
 site_name: API Territorial
-site_url: https://autogitlab.icgc.local/geostarters/api-territorial-docs
+site_url: https://openicgc.github.io/api-territorial-docs/
 site_description: Documentació i exemples llibreria mapicgc-gl-js.
 site_author: geostart
 theme:
@@ -47,7 +47,7 @@ markdown_extensions:
   - footnotes
   - tables
   - attr_list
-repo_url: "https://autogitlab.icgc.local/geostarters/icgc/api-territorial/api-territorial-docs"
+repo_url: "https://openicgc.github.io/api-territorial-docs/"
 
 nav:
   - Inici: index.md
