@@ -1,6 +1,6 @@
 <p align="center">
-<img src="docs/assets/cartography.png" alt="Esquema" width="120px">
-<img src="docs/assets/ICGC_logo.png" alt="ICGC" width="240px">
+<img src="docs/assets/apiTe.png" alt="Esquema" width="110px">
+<img src="docs/assets/icgc_logo_color.svg" alt="ICGC" width="240px">
 </p>
 
 # MkDocs - API Territorial
