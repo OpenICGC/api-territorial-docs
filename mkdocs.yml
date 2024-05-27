@@ -1,6 +1,6 @@
 site_name: API Territorial
 site_url: https://openicgc.github.io/api-territorial-docs/
-site_description: Documentació i exemples llibreria mapicgc-gl-js.
+site_description: Documentació i exemples de l'API Territorial de l'ICGC.
 site_author: geostart
 theme:
   name: "material"
