@@ -1,0 +1,73 @@
+site_name: API Territorial
+site_url: https://autogitlab.icgc.local/geostarters/api-territorial-docs
+site_description: Documentació i exemples llibreria mapicgc-gl-js.
+site_author: geostart
+theme:
+  name: "material"
+  language: "ca"
+  logo: assets/Imatge1.png
+  favicon: assets/favicon.ico
+  palette:
+    - scheme: custom
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Canviar a mode fosc
+    - scheme: slate
+      primary: custom
+      toggle:
+        icon: material/brightness-4
+        name: Canviar a mode clar
+
+  highlightjs: true
+  # hljs_style: github
+  # nav_style: dark
+  suppress_nextprev: true
+  features:
+    - navigation.tabs
+    # - navigation.instant.prefetch
+    - navigation.expand
+    - content.code.copy
+extra_css:
+  - "stylesheets/extra.css"
+markdown_extensions:
+  - codehilite:
+      linenums: True
+  - admonition
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - footnotes
+  - tables
+  - attr_list
+repo_url: "https://autogitlab.icgc.local/geostarters/icgc/api-territorial/api-territorial-docs"
+
+nav:
+  - Inici: index.md
+
+  - "Exemples":
+      - Petició i format de resposta: Peticio.md
+      - Playground: Playground.md
+      - Connexió a l'API: Connexio.md
+      - Carregar i visualitzar servei a un mapa Leaflet: Leaflet.md
+      - Carregar i visualitzar servei a un mapa Mapbox: mapbox.md
+      - Carregar i visualitzar servei a un mapa Maplibre: Maplibre.md
+      - Carregar i visualitzar servei a un mapa MapICGC: mapicgc.md
+      - Visualitzar propietats d'un servei: Propietats.md
+
+  - Documentació: apidocs.md
+
+  - Visor: 3.1.0.Map.md
+
+# - Preguntes Freqüents: faq.md
+
+plugins:
+  - search
+  - render_swagger
