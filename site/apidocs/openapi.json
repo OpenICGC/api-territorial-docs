@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://tortuguin.icgc.local:3003"
+      "url": "https://api.icgc.cat"
     }
   ],
   "tags": [
