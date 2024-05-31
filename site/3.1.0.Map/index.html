@@ -1009,6 +1009,9 @@
             document.getElementById("apidata").innerHTML =
               "Referència cadastral: " + dades[0].features[0].properties.nationalCadastralReference 
           }
+           else if (service === "all") {
+            console.log('all', dades[0].features);
+          }
         }
         if (service !== "h3") {
           if(map.getLayer("puntsh3")){
@@ -1261,6 +1264,7 @@
         <option value="vegetacio">Vegetacio Hàbitats Catalunya</option>
         <option value="incendis">Incendis Forestals</option>
          <option value="cadastre">Parcel·les cadastrals</option>
+         <option value="all">TOTS</option>
       </select>
     </div>
     </div>
