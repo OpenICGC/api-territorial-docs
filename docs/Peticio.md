@@ -56,6 +56,7 @@ https://api.icgc.cat/territori/all/geo/2.746/41.914
 | Mapa urbà Classificacions                  | Departament de Territori                                  | mucclassificacions            |
 | Mapa urbà Qualificacions                   | Departament de Territori                                  | mucqualificacions             |
 | Municipis                                  | Institut Cartogràfic i Geològic de Catalunya              | municipis                     |
+| PEIN                                       | Departament de Medi Ambient i Sostenibilitat              | pein                          |
 | Parcel·les cadastrals                      | Dirección General del Catastro                            | cadastre                      |
 | Provincies                                 | Institut Cartogràfic i Geològic de Catalunya              | provincies                    |
 | Regions sanitàries                         | Departament de Salut                                      | regionssanitaries             |
