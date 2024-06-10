@@ -51,7 +51,7 @@ Envia un parell de coordenades del territori de Catalunya i la nostra API et ret
 
 A la secció API-Examples proporcionem demostracions pràctiques per ajudar-te a connectar-te a l'API i fer peticions. Això facilita la implementació ràpida i eficient als teus projectes.
 
-- [Exemples](2.1.1 Examples.md)
+- [Exemples](Peticio.md)
 
   <br>
 
