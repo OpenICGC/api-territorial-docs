@@ -68,6 +68,29 @@ nav:
 
 # - Preguntes Freqüents: faq.md
 
+extra:
+  alternate:
+      # Original Language pip install mkdocs-google-translate
+    - name: Català
+      lang: 'ca'
+      #link: '%GT_RELATIVE_URL%'  # For relative urls back to original language
+      # Extra languages
+    - name: English
+      lang: 'en'
+      link: 'https://openicgc-github-io.translate.goog/api-territorial-docs/?_x_tr_sl=ca&_x_tr_tl=en&_x_tr_hl=ca&_x_tr_pto=wapp'
+    - name: Español
+      lang: 'es'
+      link: 'https://openicgc-github-io.translate.goog/api-territorial-docs/?_x_tr_sl=ca&_x_tr_tl=es&_x_tr_hl=ca&_x_tr_pto=wapp'
+    - name: Française
+      lang: 'fr'
+      link: 'https://openicgc-github-io.translate.goog/api-territorial-docs/?_x_tr_sl=ca&_x_tr_tl=fr&_x_tr_hl=ca&_x_tr_pto=wapp' 
+      # _x_tr_sl = source language
+      # _x_tr_tl = translation language
+  analytics:
+    provider: google
+    property: G-GR9JCZYNFH
+
+
 plugins:
   - search
   - render_swagger

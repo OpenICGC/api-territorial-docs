@@ -34,7 +34,7 @@ https://api.icgc.cat/territori/all/geo/2.746/41.914
 "id":"Municipis"}]},"NumResponses:1"]
 ```
 
-[Veure visor playground](../Playground)
+[Veure visor playground](Playground.md)
 
 ### Serveis disponibles
 
