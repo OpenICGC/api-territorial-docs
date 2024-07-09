@@ -3,7 +3,7 @@
 !!! info "Exemple petició ID servei '''municipis''' amb lon/lat"
 
 ```
-https://api.icgc.cat/territori/municipis/geo/2.746/41.914
+https://api.icgc.cat/territori/municipis/geo/2.746576/41.9143436
 ```
 
 !!! info "Exemple petició ID servei '''municipis''' amb UTM 31N X/Y"
@@ -15,13 +15,13 @@ https://api.icgc.cat/territori/municipis/utm/432648.873/4624697.432
 !!! info "Exemple petició varis ID de serveis, concatenats amb <b>,<b> i lon/lat"
 
 ```
-https://api.icgc.cat/territori/municipis,comarques,provincies,vegueries/geo/2.746/41.914
+https://api.icgc.cat/territori/municipis,comarques,provincies,vegueries/geo/2.746354/41.9140937
 ```
 
 !!! info "Exemple petició tots els serveis amb lon/lat"
 
 ```
-https://api.icgc.cat/territori/all/geo/2.746/41.914
+https://api.icgc.cat/territori/all/geo/2.7463234/41.91445467
 ```
 
 ### Resposta en format GeoJson
@@ -40,7 +40,6 @@ https://api.icgc.cat/territori/all/geo/2.746/41.914
 
 | Servei                                     | Organisme                                                 | **ID**                        |
 | ------------------------------------------ | :-------------------------------------------------------- | ----------------------------- |
-| Agrupacions censals                        | Institut d'Estadística de Catalunya                       | agrupacionscensals            |
 | Àrees Bàsiques de Salut                    | Departament de Salut                                      | areesbasiquessalut            |
 | Àrees Bàsiques de Serveis Socials          | Departament de Drets Socials                              | areasbasiquesservicisocials   |
 | Àrees Bàsiques Policials                   | Departament Interior                                      | areasbasiquespolicials        |
