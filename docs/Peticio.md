@@ -57,14 +57,18 @@ https://api.icgc.cat/territori/all/geo/2.7463234/41.91445467
 | Municipis                                  | Institut Cartogràfic i Geològic de Catalunya              | municipis                     |
 | PEIN                                       | Departament de Medi Ambient i Sostenibilitat              | pein                          |
 | Parcel·les cadastrals                      | Dirección General del Catastro                            | cadastre                      |
+| Precipitació mitjana anual                  | Servei Meteorològic de Catalunya                          | precipitacio                  |
 | Provincies                                 | Institut Cartogràfic i Geològic de Catalunya              | provincies                    |
 | Regions sanitàries                         | Departament de Salut                                      | regionssanitaries             |
 | Seccions censals                           | Institut Cartogràfic i Geològic de Catalunya              | seccionscensals               |
 | SIGPAC Recintes                            | Departament d'Acció Climàtica, Alimentació i Agenda Rural | recintessigpac                |
 | Sistema d'orientacio cartogràfica          | Departament d'Interior                                    | sistemaorientaciocartografica |
 | Subconques hidrològiques                   | Agència Catalana de l'Aigua                               | subconqueshidrologiques       |
+| Temperatura mitjana anual                  | Servei Meteorològic de Catalunya                          | temperatura                   |
 | Unitats geològiques 50 m                   | Institut Cartogràfic i Geològic de Catalunya              | unitatsgeologiques            |
 | Vegetació Hàbitats Catalunya               | Departament d'Acció Climàtica, Alimentació i Agenda Rural | vegetacio                     |
 | Vegueries                                  | Institut Cartogràfic i Geològic de Catalunya              | vegueries                     |
+| Vèrtex xarxa utilitària                    | Institut Cartogràfic i Geològic de Catalunya              | vertex                        |
+| Zones inundables T500                      | Agència Catalana de l'Aigua                               | zonesinundables               |
 
 <hr>
