@@ -53,14 +53,14 @@ nav:
   - Inici: index.md
 
   - "Exemples":
-      - Petició i format de resposta: Peticio.md
+      - Petició - resposta: Peticio.md
       - Playground: Playground.md
       - Connexió a l'API: Connexio.md
-      - Carregar i visualitzar servei a un mapa Leaflet: Leaflet.md
-      - Carregar i visualitzar servei a un mapa Mapbox: mapbox.md
-      - Carregar i visualitzar servei a un mapa Maplibre: Maplibre.md
-      - Carregar i visualitzar servei a un mapa MapICGC: mapicgc.md
-      - Visualitzar propietats d'un servei: Propietats.md
+      - Integració a Leaflet: Leaflet.md
+      - Integració a Mapbox: mapbox.md
+      - Integració a Maplibre: Maplibre.md
+      - Integració a MapICGC: mapicgc.md
+      - Propietats d'un servei: Propietats.md
 
   - Documentació: apidocs.md
 
